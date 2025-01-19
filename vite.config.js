@@ -11,6 +11,6 @@ export default defineConfig({
   },
   server: {
     host: "0.0.0.0", // Listen on all IPs (makes it accessible to others on the network)
-    port: 3000, // Optional: Specify the port (default is 5173)
+    port: 3001, // Optional: Specify the port (default is 5173)
   },
 });

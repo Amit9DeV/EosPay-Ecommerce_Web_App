@@ -17,7 +17,7 @@ const Navbar = () => {
         },
         {
             name: "Contact",
-            To: "/"
+            To: "/Contact"
         },
         {
             name: "Products",
