@@ -1,15 +1,12 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
-import { Image } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 import { HeartIcon, PlusIcon } from "lucide-react";
-import { Card, CardContent, CardFooter } from "@/components/ui/card";
 
 
-import { images } from '../data/Images'
-export default function Product({ Element, index }) {
+export default function ProductCard({ Element, index }) {
   return (
-    <div className="w-[300px] group relative space-y-4 border rounded-lg  p-1">
+    <div className="w-[300px] group relative space-y-4 border rounded-lg  p-1 shadow-lg shadow-sky-600">
       <figure className="group-hover:opacity-80">
         <img
           className="w-full rounded-[2rem] aspect-square object-cover p-5 "

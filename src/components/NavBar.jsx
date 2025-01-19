@@ -21,7 +21,7 @@ const Navbar = () => {
         },
         {
             name: "Products",
-            To: "/"
+            To: "/Products"
         },
         {
             name: "Cart",
@@ -50,7 +50,7 @@ const Navbar = () => {
 
                         {NavItem.map((e, i) => {
                             return <>
-                                <a to={e.To} className={"hover:border-b-2 hover:border-green-600 hover:text-gray-300 active:text-purple-600 "} >{e.name}</a>
+                                <NavLink to={e.To} className={" cursor-pointer hover:border-b-2 hover:border-green-600 hover:text-gray-300 active:text-purple-600 "} >{e.name}</NavLink>
                             </>
                         })}
 
@@ -96,7 +96,7 @@ const Navbar = () => {
                         <div className="space-y-2 px-2 pt-2 pb-3">
                             {NavItem.map((e, i) => {
                                 return <>
-                                    <a to={e.To} className={"block text-gray-600 hover:text-gray-800 px-3 py-2 rounded-md text-base font-medium"} >{e.name}</a>
+                                    <NavLink onClick={()=>setIsOpen(false)} to={e.To} className={"block  hover:text-gray-800 px-3 py-2 rounded-md text-base font-medium"} >{e.name}</NavLink>
                                 </>
                             })}
 
