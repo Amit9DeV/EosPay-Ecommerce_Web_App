@@ -49,7 +49,7 @@ export default function Home() {
             <CarouselContent className="gap-1 md:gap-3">
               {images.map((e, i) => {
                 return (
-                  <CarouselItem className="basis-1/10 md:basis-1/2 lg:basis-1/4">
+                  <CarouselItem className="basis-1/10 md:basis-1/2 lg:basis-1/4 p-2">
                     {<ProductCard Element={e} index={e} />}
                   </CarouselItem>
                 );
@@ -68,7 +68,7 @@ export default function Home() {
             <CarouselContent className="gap-1 md:gap-3">
               {images.map((e, i) => {
                 return (
-                  <CarouselItem className="basis-1/10 md:basis-1/2 lg:basis-1/4">
+                  <CarouselItem className="basis-1/10 md:basis-1/2 lg:basis-1/4 p-2">
                     {<ProductCard Element={e} index={e} />}
                   </CarouselItem>
                 );
@@ -87,7 +87,7 @@ export default function Home() {
             <CarouselContent className="gap-1 md:gap-3">
               {images.map((e, i) => {
                 return (
-                  <CarouselItem className="basis-1/10 md:basis-1/2 lg:basis-1/4">
+                  <CarouselItem className="basis-1/10 md:basis-1/2 lg:basis-1/4 p-2">
                     {<ProductCard Element={e} index={e} />}
                   </CarouselItem>
                 );
