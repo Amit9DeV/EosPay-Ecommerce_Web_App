@@ -25,7 +25,7 @@ const Navbar = () => {
         },
         {
             name: "Cart",
-            To: "/"
+            To: "/Cart"
         }
     ]
 

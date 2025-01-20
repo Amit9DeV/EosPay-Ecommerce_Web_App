@@ -2,9 +2,11 @@ import React from "react";
 import Navbar from "./components/NavBar";
 import Home from "./pages/Home";
 import Footer from "./components/Footer";
+import { lazy } from "react";
 import { Route, Routes } from "react-router-dom";
 import Product from "./pages/Product";
 import Contact from "./pages/Contact";
+import Cart from "./pages/Cart";
 export default function App() {
   return (
     <>
@@ -13,6 +15,7 @@ export default function App() {
         <Route path="/" element={<Home/>} />
         <Route path="/Products" element={<Product/>} />
         <Route path="/Contact" element={<Contact/>} />
+        <Route path="/Cart" element={<Cart/>}/>
       </Routes>
 
       <Footer></Footer>

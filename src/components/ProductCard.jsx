@@ -18,9 +18,9 @@ export default function ProductCard({ Element, index, ProductId }) {
         }
       }
   return (
-    <div className="w-[300px] group relative space-y-4 border rounded-lg  p-1 shadow-lg shadow-sky-600">
+    <div className="w-[300px] group relative space-y-4 border rounded-lg  p-1 shadow-lg shadow-sky-200">
       <figure className="group-hover:opacity-80">
-        <img
+        <img loading='lazy'
           className="w-full rounded-[2rem] aspect-square object-cover p-5 "
           src={Element.imagePath}
           alt={Element.name}
@@ -36,7 +36,7 @@ export default function ProductCard({ Element, index, ProductId }) {
           </h3>
           <p className="text-sm text-muted-foreground">{Element.description}</p>
         </div>
-        <p className="text-lg font-semibold">{Element.price}</p>
+        <p className="text-lg font-semibold">₹ {Element.price}</p>
       </div>
       <div  className="flex gap-4">
         <Button variant="outline" size="icon" className="flex-shrink-0">
