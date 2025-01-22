@@ -24,33 +24,42 @@ import { MdDelete } from "react-icons/md";
 
 export default function Cart() {
   const [arr, setarr] = useState([]);
-  const [TotalPrice,SetTotalPrice] = useState(0)
+  const [TotalPrice, SetTotalPrice] = useState(0);
+
+  const FetchLocalStorage = () => {
+    return JSON.parse(localStorage.getItem("Cart")) || [];
+  };
+
   useEffect(() => {
     let TempTotalPrice = 0;
-    let data = JSON.parse(localStorage.getItem("Cart")) || [];
+    let data = FetchLocalStorage();
+    console.log(data)
     let FilterProduct = data.map((index) => images[index]);
-    data.map((index)=> TempTotalPrice +=images[index].price)
+    data.map((index) => (TempTotalPrice += images[index].price));
     setarr(FilterProduct);
-    SetTotalPrice(TempTotalPrice)
-    
+    SetTotalPrice(TempTotalPrice);
+
     console.log(arr);
   }, []);
   console.log(arr);
-  const HandleonclickDelete = (index)=>{
-    // let temp = [...arr];
-    // temp.splice(index,1);
-    // setarr(temp)
-    // let data = JSON.parse(localStorage("Cart")) || [];
-    // data.splice(index,1);
-    // localStorage.setItem("Cart",JSON.stringify(data));
-    // let newTotalPrice = 0;
-    // data.map((index) => newTotalPrice += images[index].price);
-    // SetTotalPrice(newTotalPrice);
-  }
+  const HandleonclickDelete = (index) => {
+    let temp = [...arr];
+    temp.splice(index, 1);
+    setarr(temp);
+    let data = FetchLocalStorage();
+    data.splice(index, 1);
+    localStorage.setItem("Cart", JSON.stringify(data));
+    let newTotalPrice = 0;
+    data.map((index) => (newTotalPrice += images[index].price));
+    SetTotalPrice(newTotalPrice);
+  };
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <h3 className="text-4xl font-bold py-7">Shoping Bag</h3>
-      <p className="text-xl p-3" ><span className="text-green-600 font-bold">{arr.length}</span> item in your bag</p>
+      <p className="text-xl p-3">
+        <span className="text-green-600 font-bold">{arr.length}</span> item in
+        your bag
+      </p>
       <div className=" flex md:flex-row flex-col ">
         <Table className="w-full md:w-[100vh] ">
           <TableHeader>
@@ -62,20 +71,29 @@ export default function Cart() {
             </TableRow>
           </TableHeader>
           <TableBody>
-            {arr.map((element, index) => {
-              return (
-                <TableRow>
-                  <TableCell>
-                    <img className="w-40" src={element.imagePath} alt="img" />
-                  </TableCell>
-                  <TableCell>{element.price}</TableCell>
-                  <TableCell>1</TableCell>
-                  <TableCell >
-                    <MdDelete onClick={()=>HandleonclickDelete(index)} className="text-red-600 cursor-pointer text-xl active:text-red-400" />
-                  </TableCell>
-                </TableRow>
-              );
-            })}
+            {arr.length === 0
+              ? " Your Cart is empty"
+              : arr.map((element, index) => {
+                  return (
+                    <TableRow>
+                      <TableCell>
+                        <img
+                          className="w-40"
+                          src={element.imagePath}
+                          alt="img"
+                        />
+                      </TableCell>
+                      <TableCell>{element.price}</TableCell>
+                      <TableCell>1</TableCell>
+                      <TableCell>
+                        <MdDelete
+                          onClick={() => HandleonclickDelete(index)}
+                          className="text-red-600 cursor-pointer text-xl active:text-red-400"
+                        />
+                      </TableCell>
+                    </TableRow>
+                  );
+                })}
           </TableBody>
         </Table>
         <div className=" py-10 md:p-0">

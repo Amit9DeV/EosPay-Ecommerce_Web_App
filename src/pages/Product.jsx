@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import ProductCard from '../components/ProductCard'
 import { images } from '../data/Images'
 
@@ -7,6 +7,7 @@ export default function Product() {
         let data = JSON.parse(localStorage.getItem("Cart")) || []
           data.push(i);
           localStorage.setItem("Cart",JSON.stringify(data));
+          console.log(data)
  }
   return (
     <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-center'>

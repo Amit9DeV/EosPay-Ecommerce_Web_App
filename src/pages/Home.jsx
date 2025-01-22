@@ -16,11 +16,12 @@ export default function Home() {
     "/images/tataSaltBanner.png",
     "/images/Maggi.jpg",
   ];
-  const ProductID = (i)=>{
-  let data = JSON.parse(localStorage.getItem("Cart")) || [];
-  data.push(i);
-  localStorage.setItem("Cart",JSON.stringify(data))
-  }
+
+  const ProductID = (i) => {
+    let data = JSON.parse(localStorage.getItem("Cart")) || [];
+    data.push(i);
+    localStorage.setItem("Cart", JSON.stringify(data));
+  };
 
   return (
     <div>
@@ -35,7 +36,8 @@ export default function Home() {
           {slidingImg.map((Element, index) => {
             return (
               <CarouselItem className="w-full">
-                <img loading="lazy"
+                <img
+                  loading="lazy"
                   className="w-full h-[35vh] md:h-[80vh]"
                   key={index + 2}
                   src={Element}
@@ -49,18 +51,24 @@ export default function Home() {
       <div className="py-8 overflow-hidden ">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8  ">
           <h1 className="text-4xl font-semibold pt-1 pb-2">New Launches</h1>
-          <Carousel w-full max-w-sm >
+          <Carousel w-full max-w-sm>
             <CarouselContent className="gap-1 md:gap-3 py-2">
               {images.map((e, i) => {
                 return (
                   <CarouselItem className="basis-1/10  ">
-                    {<ProductCard Element={e} index={i} ProductId = {ProductID} />}
+                    {
+                      <ProductCard
+                        Element={e}
+                        index={i}
+                        ProductId={ProductID}
+                      />
+                    }
                   </CarouselItem>
                 );
               })}
             </CarouselContent>
-            <CarouselPrevious/>
-            <CarouselNext/>
+            <CarouselPrevious />
+            <CarouselNext />
           </Carousel>
         </div>
 
@@ -73,7 +81,13 @@ export default function Home() {
               {images.map((e, i) => {
                 return (
                   <CarouselItem className="basis-1/10  ">
-                    {<ProductCard Element={e} index={i}  ProductId = {ProductID}/>}
+                    {
+                      <ProductCard
+                        Element={e}
+                        index={i}
+                        ProductId={ProductID}
+                      />
+                    }
                   </CarouselItem>
                 );
               })}
@@ -92,7 +106,13 @@ export default function Home() {
               {images.map((e, i) => {
                 return (
                   <CarouselItem className="basis-1/10 ">
-                    {<ProductCard Element={e} index={i} ProductId = {ProductID}/>}
+                    {
+                      <ProductCard
+                        Element={e}
+                        index={i}
+                        ProductId={ProductID}
+                      />
+                    }
                   </CarouselItem>
                 );
               })}
