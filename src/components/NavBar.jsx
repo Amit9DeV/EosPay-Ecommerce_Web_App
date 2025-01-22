@@ -1,14 +1,21 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { ModeToggle } from "./mode-toggle";
 import { NavLink } from "react-router-dom";
 import { Search } from "lucide-react";
-
+import { IoCartOutline } from "react-icons/io5";
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
-
+    const [data,setData] = useState([]);
     const toggleMenu = () => {
         setIsOpen(!isOpen);
     };
+
+
+    useEffect(()=>{
+        let data = JSON.parse(localStorage.getItem("Cart")) || [];
+        setData(data.length);
+    })
+
 
     let NavItem = [
         {
@@ -24,7 +31,7 @@ const Navbar = () => {
             To: "/Products"
         },
         {
-            name: "Cart",
+            name: <IoCartOutline className="text-2xl" />,
             To: "/Cart"
         }
     ]
@@ -50,9 +57,10 @@ const Navbar = () => {
 
                         {NavItem.map((e, i) => {
                             return <>
-                                <NavLink to={e.To} className={" cursor-pointer hover:border-b-2 hover:border-green-600 hover:text-gray-300 active:text-purple-600 "} >{e.name}</NavLink>
+                                <NavLink key={i} to={e.To} className={" relative cursor-pointer hover:border-b-2 hover:border-green-600 hover:text-gray-300 active:text-purple-600 "} >{e.name}</NavLink>
                             </>
                         })}
+                        <p className="absolute right-52 top-1">{data}</p>
 
                         <ModeToggle />
                     </div>
@@ -96,7 +104,7 @@ const Navbar = () => {
                         <div className="space-y-2 px-2 pt-2 pb-3">
                             {NavItem.map((e, i) => {
                                 return <>
-                                    <NavLink onClick={()=>setIsOpen(false)} to={e.To} className={"block  hover:text-gray-800 px-3 py-2 rounded-md text-base font-medium"} >{e.name}</NavLink>
+                                    <NavLink key={i} onClick={()=>setIsOpen(false)} to={e.To} className={"block  hover:text-gray-800 px-3 py-2 rounded-md text-base font-medium"} >{e.name}</NavLink>
                                 </>
                             })}
 
