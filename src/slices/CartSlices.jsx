@@ -15,9 +15,13 @@ const cartSlices = createSlice ({
             state.splice(index,1)
             localStorage.setItem("Cart",JSON.stringify(state))
             
+        },
+        ItemIndex:(state,action)=>{
+            const index = action.payload;
+            console.log(index)
         }
     }
 })
 
-export const {AddItem,RemoveItem} = cartSlices.actions;
+export const {AddItem,RemoveItem,ItemIndex} = cartSlices.actions;
 export default cartSlices.reducer

@@ -5,26 +5,27 @@ import { HeartIcon, PlusIcon } from "lucide-react";
 import { useState } from "react";
 import { images } from "@/data/Images";
 import { useDispatch } from "react-redux";
-import { AddItem } from "@/slices/CartSlices";
-
+import { AddItem,ItemIndex } from "@/slices/CartSlices";
+import { NavLink } from "react-router-dom";
 
 export default function ProductCard({ Element, index, ProductId }) {
-  
   const [active, setActive] = useState(true);
-  const Dispatch = useDispatch()
+  const Dispatch = useDispatch();
   const HandleOnclick = (index) => {
     ProductId(index);
     setActive(!active);
-    Dispatch(AddItem(index))
+    Dispatch(AddItem(index));
   };
+
+ const HandleOnclickBuyNow = (index)=>{
+      Dispatch(ItemIndex(index));
+  }
 
   useEffect(() => {
     let data = JSON.parse(localStorage.getItem("Cart")) || [];
     setActive(data.includes(index));
   }, [index]);
 
-
-   
   return (
     <div className="w-[300px] group relative space-y-4 border rounded-lg  p-1 shadow-lg shadow-sky-200">
       <figure className="group-hover:opacity-80">
@@ -47,6 +48,14 @@ export default function ProductCard({ Element, index, ProductId }) {
       <div className="flex gap-4">
         <Button variant="outline" size="icon" className="flex-shrink-0">
           <HeartIcon className="size-4" />
+        </Button>
+        <Button 
+          
+          variant="outline"
+          className=" active:bg-green-600 w-full hover:text-slate-400"
+        >
+          <NavLink onClick={()=>HandleOnclickBuyNow(index)} to="/ProductDetails" ><p className="text-green-600">Buy Now</p></NavLink>
+          
         </Button>
         <Button
           disabled={active}
