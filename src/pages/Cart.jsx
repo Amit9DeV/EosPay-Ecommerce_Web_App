@@ -30,20 +30,28 @@ export default function Cart() {
   const [arr, setarr] = useState([]);
   const [TotalPrice, SetTotalPrice] = useState(0);
 
-  const FetchLocalStorage = () => {
-    return JSON.parse(localStorage.getItem("Cart")) || [];
-  };
 
-  useEffect(() => {
+
+  const FetchLocalStorage = () => {
+    let data = JSON.parse(localStorage.getItem("Cart")) || [];
     let TempTotalPrice = 0;
-    let data = FetchLocalStorage();
+    
     let FilterProduct = data.map((index) => images[index]);
     data.map((index) => (TempTotalPrice += images[index].price));
     setarr(FilterProduct);
     SetTotalPrice(TempTotalPrice);
-  }, []);
+  };
+
+  useEffect(()=>{
+    FetchLocalStorage();
+  },[])
 
   const Dispatch = useDispatch()
+
+ const HandleOnDelete = (index)=>{
+    Dispatch(RemoveItem(index));
+   setTimeout(FetchLocalStorage(index),0);
+  }
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -64,7 +72,7 @@ export default function Cart() {
           </TableHeader>
           <TableBody>
             {arr.length === 0
-              ? " Your Cart is empty"
+              ? <p className="text-red-600 text-2xl overflow-hidden " >Your Cart Is Empty</p>
               : arr.map((element, index) => {
                   return (
                     <TableRow>
@@ -79,7 +87,7 @@ export default function Cart() {
                       <TableCell>1</TableCell>
                       <TableCell>
                         <MdDelete
-                          onClick={() => Dispatch(RemoveItem(index))}
+                          onClick={() => HandleOnDelete(index)}
                           className="text-red-600 cursor-pointer text-xl active:text-red-400"
                         />
                       </TableCell>

@@ -11,9 +11,10 @@ const cartSlices = createSlice ({
             localStorage.setItem("Cart",JSON.stringify(state));
         },
         RemoveItem:(state,action)=>{
-            const updatedCart = state.filter((_, index) => index !== action.payload.index);
-            localStorage.setItem("Cart",JSON.stringify(updatedCart))
-            return updatedCart;
+            const index = action.payload
+            state.splice(index,1)
+            localStorage.setItem("Cart",JSON.stringify(state))
+            
         }
     }
 })
