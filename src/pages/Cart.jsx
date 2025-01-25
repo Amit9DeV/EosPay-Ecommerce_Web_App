@@ -22,6 +22,10 @@ import { Button } from "../components/ui/button";
 import { images } from "../data/Images";
 import { MdDelete } from "react-icons/md";
 
+import { useDispatch } from "react-redux";
+import { RemoveItem } from "@/slices/CartSlices";
+
+
 export default function Cart() {
   const [arr, setarr] = useState([]);
   const [TotalPrice, SetTotalPrice] = useState(0);
@@ -38,18 +42,9 @@ export default function Cart() {
     setarr(FilterProduct);
     SetTotalPrice(TempTotalPrice);
   }, []);
-  console.log(arr);
-  const HandleonclickDelete = (index) => {
-    let temp = [...arr];
-    temp.splice(index, 1);
-    setarr(temp);
-    let data = FetchLocalStorage();
-    data.splice(index, 1);
-    localStorage.setItem("Cart", JSON.stringify(data));
-    let newTotalPrice = 0;
-    data.map((index) => (newTotalPrice += images[index].price));
-    SetTotalPrice(newTotalPrice);
-  };
+
+  const Dispatch = useDispatch()
+
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <h3 className="text-4xl font-bold py-7">Shoping Bag</h3>
@@ -84,7 +79,7 @@ export default function Cart() {
                       <TableCell>1</TableCell>
                       <TableCell>
                         <MdDelete
-                          onClick={() => HandleonclickDelete(index)}
+                          onClick={() => Dispatch(RemoveItem(index))}
                           className="text-red-600 cursor-pointer text-xl active:text-red-400"
                         />
                       </TableCell>

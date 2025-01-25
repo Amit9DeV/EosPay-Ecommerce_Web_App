@@ -3,6 +3,7 @@ import { ModeToggle } from "./mode-toggle";
 import { NavLink } from "react-router-dom";
 import { Search } from "lucide-react";
 import { IoCartOutline } from "react-icons/io5";
+import { useSelector } from "react-redux";
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [data,setData] = useState([]);
@@ -36,6 +37,8 @@ const Navbar = () => {
         }
     ]
 
+    const ItemCount = useSelector((state)=>state.length) 
+
     return (
         <nav className=" border-b border-gray-200 shadow-md sticky border-t-fuchsia-200 backdrop-blur-sm top-0 z-50 w-full">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -60,7 +63,7 @@ const Navbar = () => {
                                 <NavLink key={i} to={e.To} className={" relative cursor-pointer hover:border-b-2 hover:border-green-600 hover:text-gray-300 active:text-purple-600 "} >{e.name}</NavLink>
                             </>
                         })}
-                        <p className="absolute right-52 top-1">{data}</p>
+                        <p className="absolute right-52 top-1">{ItemCount}</p>
 
                         <ModeToggle />
                     </div>

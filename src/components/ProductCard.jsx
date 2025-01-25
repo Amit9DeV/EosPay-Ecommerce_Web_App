@@ -4,12 +4,18 @@ import { Button } from "@/components/ui/button";
 import { HeartIcon, PlusIcon } from "lucide-react";
 import { useState } from "react";
 import { images } from "@/data/Images";
+import { useDispatch } from "react-redux";
+import { AddItem } from "@/slices/CartSlices";
+
+
 export default function ProductCard({ Element, index, ProductId }) {
   
   const [active, setActive] = useState(true);
+  const Dispatch = useDispatch()
   const HandleOnclick = (index) => {
     ProductId(index);
     setActive(!active);
+    Dispatch(AddItem(index))
   };
 
   useEffect(() => {
@@ -17,6 +23,8 @@ export default function ProductCard({ Element, index, ProductId }) {
     setActive(data.includes(index));
   }, [index]);
 
+
+   
   return (
     <div className="w-[300px] group relative space-y-4 border rounded-lg  p-1 shadow-lg shadow-sky-200">
       <figure className="group-hover:opacity-80">
