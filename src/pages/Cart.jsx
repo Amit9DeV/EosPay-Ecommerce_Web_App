@@ -33,13 +33,10 @@ export default function Cart() {
   useEffect(() => {
     let TempTotalPrice = 0;
     let data = FetchLocalStorage();
-    console.log(data)
     let FilterProduct = data.map((index) => images[index]);
     data.map((index) => (TempTotalPrice += images[index].price));
     setarr(FilterProduct);
     SetTotalPrice(TempTotalPrice);
-
-    console.log(arr);
   }, []);
   console.log(arr);
   const HandleonclickDelete = (index) => {
