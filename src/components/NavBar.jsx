@@ -110,6 +110,7 @@ const Navbar = () => {
                                     <NavLink key={i} onClick={()=>setIsOpen(false)} to={e.To} className={"block  hover:text-gray-800 px-3 py-2 rounded-md text-base font-medium"} >{e.name}</NavLink>
                                 </>
                             })}
+                        <p className="absolute left-12 bottom-36 ">{ItemCount}</p>
 
                             <ModeToggle />
                         </div>
