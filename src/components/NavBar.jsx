@@ -60,7 +60,7 @@ const Navbar = () => {
 
                         {NavItem.map((e, i) => {
                             return <>
-                                <NavLink key={i} to={e.To} className={" relative cursor-pointer hover:border-b-2 hover:border-green-600 hover:text-gray-300 active:text-purple-600 "} >{e.name}</NavLink>
+                                <NavLink key={i} to={e.To} className={" relative cursor-pointer hover:border-b-2 hover:border-green-600 hover:text-gray-500 active:text-purple-600 "} >{e.name}</NavLink>
                             </>
                         })}
                         <p className="absolute right-52 top-1">{ItemCount}</p>

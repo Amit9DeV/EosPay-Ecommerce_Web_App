@@ -66,7 +66,7 @@ export default function ProductCard({ Element, index, ProductId }) {
           className=" active:bg-green-600 w-full hover:text-slate-400"
         >
           {active ? (
-            <p className="text-red-600">Already in Cart</p>
+            <p className="text-red-600">Added in Cart</p>
           ) : (
             `Add to Card`
           )}

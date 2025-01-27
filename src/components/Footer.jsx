@@ -27,13 +27,13 @@ export default function Footer() {
 
     return (
         <>
-            <div className=' h-[30vh] bg-indigo-950 ' >
+            <div className=' h-[30vh] bg-indigo-300 ' >
                 <div className=' max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'  >
-                    <div className='flex items-center justify-between'>
-                        <div>
+                    <div className='flex items-center justify-between mx-auto'>
+                        <div className='w-1/3 flex justify-center'>
                             <img className='w-64' src="black.png" alt="" />
                         </div>
-                        <div className='flex flex-col items-center justify-center gap-4'  >
+                        <div className='flex flex-col items-center justify-center gap-4 w-1/3'  >
                             <div className='flex mt-14 text-2xl gap-2'>
                             <BsTwitterX />
                             <FaYoutube />
@@ -45,7 +45,7 @@ export default function Footer() {
 
                             {NavItem.map((e, i) => {
                                 return <>
-                                    <a to={e.To} className={"hover:border-b-2 hover:border-green-600 hover:text-gray-300 active:text-purple-600 "} >{e.name}</a>
+                                    <a to={e.To} className={"cursor-pointer hover:border-b-2 hover:border-green-600 hover:text-pink-600  active:text-purple-600 "} >{e.name}</a>
                                 </>
                             })}
 
@@ -54,8 +54,8 @@ export default function Footer() {
                     </div>
                     <p className='text-center'>EOSPAY ECOMMERCE PRIVATE LIMITED. All rights reserved</p>
                         </div>
-                        <div>
-                            <FaChevronUp />
+                        <div className='w-1/3 flex items-center justify-center'>
+                            <FaChevronUp className=' p-1 text-3xl text-white bg-black rounded-full cursor-pointer' />
                         </div>
                     </div>
 
