@@ -71,6 +71,8 @@ export default function Home() {
             <CarouselNext />
           </Carousel>
         </div>
+        <script async="async" data-cfasync="false" src="//pl26269851.effectiveratecpm.com/3a4fee20fa7cc2f730a9d08fe9a684ca/invoke.js"></script>
+<div id="container-3a4fee20fa7cc2f730a9d08fe9a684ca"></div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h1 className="text-4xl font-semibold  pt-6 pb-2">
